@@ -48,7 +48,7 @@ class NoteController extends Controller
             });
         }
 
-        $notes=$query->latest()->paginate(3);
+        $notes = $query->orderBy('id', 'desc')->paginate(3);
 
         if($request->expectsJson()){
             return response(

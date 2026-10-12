@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->string('status')->default('Невыполнена');
             $table->string('category');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
