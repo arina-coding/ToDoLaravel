@@ -3,28 +3,26 @@
 @section('content')
 
 <div class="container">
-    <h2>Восстановление пароля</h2>
+    <h2>Подтверждение email</h2>
 
     <p class="form-footer">
-        Забыли пароль? Введите email, и мы отправим ссылку для сброса.
+        Спасибо за регистрацию! Проверьте email — мы отправили ссылку для подтверждения.
     </p>
 
-    @if (session('status'))
-        <div class="success">{{ session('status') }}</div>
+    @if (session('status') == 'verification-link-sent')
+        <div class="success">Новая ссылка отправлена на ваш email.</div>
     @endif
 
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('verification.send') }}">
         @csrf
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus>
-            @error('email')
-                <div class="error">{{ $message }}</div>
-            @enderror
-        </div>
-
-        <button class="button-add" type="submit">Отправить ссылку</button>
+        <button class="button-add" type="submit">Отправить письмо снова</button>
     </form>
+
+    <p class="form-footer">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="form-footer-link">Выйти</button>
+        </form>
+    </p>
 </div>
 @endsection
