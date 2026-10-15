@@ -36,7 +36,7 @@
    ```bash
    git clone https://github.com/arina-coding/ToDoLaravel.git
    cd ToDoLaravel
-   ```
+  
 
 2. Установить зависимости:
    ```bash
@@ -82,4 +82,4 @@
 ```bash
 php artisan test
 ```
-
+ ```
